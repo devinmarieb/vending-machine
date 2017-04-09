@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha tests/vendingMachineTest.js"
+    "test": "mocha tests/*.js"
   },
   "repository": {
     "type": "git",
