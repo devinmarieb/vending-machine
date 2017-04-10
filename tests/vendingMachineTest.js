@@ -93,5 +93,35 @@ describe('Elevator', function() {
     setTimeout(()=> {assert.equal(vendingMachine.state.selection, 'B1')}, 1000)
   })
 
+  it('should call insertCredit and update personCredits', () => {
+    person.reset()
+    person.insertCredit(100)
+    assert.equal(person.state.personCredits, 400)
+  })
+
+  it('should call getChangeBack and update personCredits', () => {
+    person.getChangeBack(25)
+    assert.equal(person.state.personCredits, 425)
+  })
+
+  it('should call makeSelection and update personSelection', () => {
+    person.makeSelection('A1')
+    assert.equal(person.state.personSelection, 'A1')
+  })
+
+  it('should reset VendingMachine', ()=> {
+    vendingMachine.reset()
+    assert.equal(vendingMachine.state.credits, 0)
+    assert.equal(vendingMachine.state.change, 0)
+    assert.equal(vendingMachine.state.selection, '')
+    assert.equal(vendingMachine.state.treatPrice, '')
+    assert.equal(vendingMachine.state.message, '')
+  })
+
+  it('should reset Person', ()=> {
+    person.reset()
+    assert.equal(person.state.personCredits, 500)
+    assert.equal(person.state.personSelection, '')
+  })
 
 })
